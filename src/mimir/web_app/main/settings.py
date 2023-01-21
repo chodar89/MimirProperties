@@ -38,6 +38,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
+INSTALLED_APPS.extend(
+    [
+        "infrastructure",
+        # Main should be the last
+        "main",
+    ]
+)
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -72,7 +80,6 @@ WSGI_APPLICATION = "main.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
-
     "default": {
         "ENGINE": f"django.db.backends.{os.getenv('DJANGO_DB_ENGINE')}",
         "NAME": os.getenv("DJANGO_DB_NAME"),
