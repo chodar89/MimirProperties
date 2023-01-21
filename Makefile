@@ -1,6 +1,6 @@
 PROJ_PATH=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
-WEB_APP_PATH = src/mimir
-APP_PATH = src/
+WEB_APP_PATH = src/mimir/web_app
+APP_PATH = src/mimir
 TEST_PATH = tests/
 PYTHON_EXEC?=poetry run python
 ADMIN_EMAIL?=admin@mimir.com
