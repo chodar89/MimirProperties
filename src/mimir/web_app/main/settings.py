@@ -56,6 +56,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+MIGRATION_MODULES = {"infrastructure": "infrastructure.repositories.models.migrations"}
+
 ROOT_URLCONF = "main.urls"
 
 TEMPLATES = [
@@ -110,6 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "infrastructure.UserModel"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
