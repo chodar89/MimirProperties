@@ -26,4 +26,4 @@ makemigrations:
 
 # Linting
 lint:
-	black ${APP_PATH} && isort ${APP_PATH} && mypy ${APP_PATH}
+	poetry run black ${APP_PATH} && poetry run isort ${APP_PATH} && poetry run mypy ${APP_PATH}
