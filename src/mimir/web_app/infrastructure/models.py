@@ -1,3 +1,3 @@
-from .repositories.models import PropertyModel, UserModel, AddressModel
+from .repositories.models import AddressModel, ListingModel, UserModel
 
-__all__ = ["UserModel", "PropertyModel", "AddressModel"]
+__all__ = ["UserModel", "ListingModel", "AddressModel"]
