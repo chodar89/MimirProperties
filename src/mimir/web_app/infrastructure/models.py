@@ -1,3 +1,3 @@
-from infrastructure.repositories.models import UserModel
+from .repositories.models import PropertyModel, UserModel
 
-__all__ = ["UserModel"]
+__all__ = ["UserModel", "PropertyModel"]
