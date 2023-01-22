@@ -4,7 +4,7 @@ from .base import EntityBaseModel
 from .listing import ListingModel
 
 
-class PlotModel(EntityBaseModel, models.Model):
+class PriceHistoryModel(EntityBaseModel, models.Model):
     class Meta:
         ordering = ("-created_at",)
 

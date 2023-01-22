@@ -1,10 +1,11 @@
 from django.db import models
-
+from .address import AddressModel
 from .base import EntityBaseModel
 
 
 class ListingModel(EntityBaseModel, models.Model):
 
+    address = models.ForeignKey(AddressModel, on_delete=models.CASCADE, related_name="listings")
     area_square_meters = models.IntegerField()
     listing_date = models.DateField()
     listing_details = models.JSONField()
