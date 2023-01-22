@@ -1,1 +1,1 @@
-from .user_model import UserModel
+from infrastructure.repositories.models.user import UserModel
