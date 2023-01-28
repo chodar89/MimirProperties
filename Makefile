@@ -1,4 +1,5 @@
 PROJ_PATH=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+PPATH = ${PYTHONPATH}:${PWD}/src/mimir/web_app:${PWD}/src/
 WEB_APP_PATH = src/mimir/web_app
 APP_PATH = src/mimir
 TEST_PATH = tests/
@@ -27,3 +28,7 @@ makemigrations:
 # Linting
 lint:
 	poetry run black ${APP_PATH} && poetry run isort ${APP_PATH} && poetry run mypy ${APP_PATH}
+
+# Tests
+test:
+	 PYTHONPATH=${PPATH} pytest tests
