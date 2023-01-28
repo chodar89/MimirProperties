@@ -9,3 +9,8 @@ class BeautifulSoupScraper(ScraperInterface):
     def __init__(self):
         self._bs = BeautifulSoup
     ...
+    
+    def process(self, url: str):
+        
+    
+    def _make_request(self)

@@ -1,4 +1,5 @@
 from django.db import models
+
 from .address import AddressModel
 from .base import EntityBaseModel
 

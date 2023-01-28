@@ -27,8 +27,8 @@ makemigrations:
 
 # Linting
 lint:
-	poetry run black ${APP_PATH} && poetry run isort ${APP_PATH} && poetry run mypy ${APP_PATH}
+	poetry run black ${APP_PATH} ${TEST_PATH} && poetry run isort ${APP_PATH} ${TEST_PATH} && poetry run mypy ${APP_PATH}
 
 # Tests
 test:
-	 PYTHONPATH=${PPATH} pytest tests
+	${PYTHON_EXEC} pytest tests
