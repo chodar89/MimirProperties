@@ -13,6 +13,7 @@ beautifulsoup4 = "^4.11.1"
 attrs = "^22.2.0"
 dependency-injector = "^4.41.0"
 python-dotenv = "^0.21.1"
+django-allauth = "^0.52.0"
 
 
 [tool.poetry.group.dev.dependencies]
