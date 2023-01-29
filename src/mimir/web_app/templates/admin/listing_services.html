@@ -16,7 +16,7 @@
     <div class="card-body">
       <h5 class="card-title">{{listing_service}}</h5>
       <p class="card-text">Scrape data from. Some text etx</p>
-      <a href="#" class="btn btn-primary">Process Data</a>
+      <a href="{% url 'scrape_data' %}?service={{listing_service}}" class="btn btn-primary">Process Data</a>
     </div>
   </div>
 {% endfor %}
