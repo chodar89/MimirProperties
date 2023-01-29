@@ -1,4 +1,4 @@
-from shared.enums import StrEnum
+from enum import StrEnum
 
 
 class HttpMethod(StrEnum):
