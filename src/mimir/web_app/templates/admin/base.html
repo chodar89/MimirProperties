@@ -1,0 +1,8 @@
+{% extends "admin/base.html" %}
+{% block pretitle %}
+    {% if request.resolver_match.url_name  == "index" %}
+      <div style="margin-bottom: 15px;">
+        <a class="button" id="srape-data">Scrape-Data</a>
+      </div>
+    {% endif %}
+{% endblock pretitle %}
