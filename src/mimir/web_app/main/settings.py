@@ -53,7 +53,6 @@ INSTALLED_APPS = [
 INSTALLED_APPS.extend(
     [
         "infrastructure",
-        "user_panel",
         # Main should be the last
         "main",
     ]
