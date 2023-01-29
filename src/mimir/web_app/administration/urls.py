@@ -1,7 +1,7 @@
 from django.urls import path
 
-from .scraper.views import ScrapeDataView
+from .scraper.views import ListingServicesView
 
 urlpatterns = [
-    path("scrape-data", ScrapeDataView.as_view(), name="scrape-data"),
+    path("listing-services", ListingServicesView.as_view(), name="listing_services"),
 ]

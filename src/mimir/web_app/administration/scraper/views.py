@@ -4,9 +4,9 @@ from django.views.generic import TemplateView
 from shared.value_objects.listing_service.listings import ListingServiceName
 
 
-class ScrapeDataView(LoginRequiredMixin, TemplateView):
+class ListingServicesView(LoginRequiredMixin, TemplateView):
 
-    template_name = "admin/scrape_data.html"
+    template_name = "admin/listing_services.html"
 
     def get_context_data(self, **kwargs: dict) -> dict:
         context = super().get_context_data(**kwargs)
