@@ -9,6 +9,13 @@ readme = "README.md"
 python = "^3.11"
 django = "^4.1.5"
 psycopg2 = "^2.9.5"
+beautifulsoup4 = "^4.11.1"
+attrs = "^22.2.0"
+dependency-injector = "^4.41.0"
+python-dotenv = "^0.21.1"
+django-allauth = "^0.52.0"
+django-bootstrap-v5 = "^1.0.11"
+django-admin-interface = "^0.24.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -17,10 +24,14 @@ isort = "^5.11.4"
 autoflake = "^2.0.0"
 mypy = "^0.991"
 django-stubs = "^1.13.2"
+flake8 = "^6.0.0"
+pytest-dotenv = "^0.5.2"
+types-requests = "^2.28.11.8"
 
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.2.1"
+pytest-django = "^4.5.2"
 
 [build-system]
 requires = ["poetry-core"]
@@ -30,3 +41,12 @@ build-backend = "poetry.core.masonry.api"
 [tool.black]
 line-length = 100
 target-version = ['py311']
+
+[tool.pytest.ini_options]
+pythonpath = ["src.mimir.web_app", "src", "."]
+DJANGO_SETTINGS_MODULE = "main.settings"
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test", "Acceptance"]
+python_functions = ["test"]
+testpaths = ["tests"]
+env_override_existing_values = 1

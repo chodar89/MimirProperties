@@ -1,0 +1,3 @@
+ENVIRONMENT="test"
+SECRET_KEY="test-key"
+PYTHONPATH=${PYTHONPATH}:${PWD}/src/mimir/web_app:${PWD}/src/
