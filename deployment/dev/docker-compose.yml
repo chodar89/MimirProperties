@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+  mimir-app:
+    container_name: mimir-django
+    image: mimirproperties
+    build:
+      context: ../../
+      dockerfile: ./deployment/dev/Dockerfile
+    user: ${CURRENT_UID}
+    ports:
+      - 8000:8000
+    volumes:
+      - ../../:/app
+    restart: always
+    env_file:
+      - .env
+    command: /start.sh
+    stdin_open: true
+    tty: true
+
+  mimir-db:
+    container_name: mimir-db
+    image: library/postgres:15.1
+    profiles: ["dev", "dev-no-tunnel"]
+    ports:
+      - "${DJANGO_DB_PORT}:${DJANGO_DB_PORT}"
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${DJANGO_DB_NAME}
+      - POSTGRES_USER=${DJANGO_DB_USER}
+      - POSTGRES_PASSWORD=${DJANGO_DB_PASSWORD}
+      - PGPORT=${DJANGO_DB_PORT}
+    volumes:
+      - mimir-db-data:/var/lib/postgresql/data
+
+networks:
+  default:
+    external:
+      name: mimir-network
+    driver: bridge
+
+volumes:
+  mimir-db-data:
