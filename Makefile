@@ -1,5 +1,5 @@
 PROJ_PATH=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
-PPATH = ${PYTHONPATH}:./src/mimir/web_app:./src/
+PPATH = ${PYTHONPATH}:${PWD}/src/mimir/web_app:${PWD}/src/
 WEB_APP_PATH = src/mimir/web_app
 APP_PATH = src/
 TEST_PATH = tests/
@@ -41,7 +41,7 @@ lint-ci:
 
 # Tests
 test:
-	${PYTHON_EXEC} pytest tests
+	${PYTHON_EXEC} -m pytest tests
 
 # Docker
 dev-build:
