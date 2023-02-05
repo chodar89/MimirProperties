@@ -28,6 +28,6 @@ jobs:
         with:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Poetry install
-        run: poetry install --group dev
+        run: poetry install --with dev
       - name: Lint
         run: make lint
