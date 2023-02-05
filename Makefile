@@ -41,7 +41,7 @@ lint-ci:
 
 # Tests
 test:
-	${PYTHON_EXEC} pytest tests
+	${PYTHON_EXEC} -m pytest tests
 
 # Docker
 dev-build:
