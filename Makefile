@@ -1,5 +1,5 @@
 PROJ_PATH=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
-PPATH = ${PYTHONPATH}:${PWD}/src/mimir/web_app:${PWD}/src/
+PPATH = ${PYTHONPATH}:./src/mimir/web_app:./src/
 WEB_APP_PATH = src/mimir/web_app
 APP_PATH = src/
 TEST_PATH = tests/

@@ -9,6 +9,9 @@ concurrency: ci-${{ github.ref_name }}
 on:
   push:
 
+env:
+  DJANGO_DB_ENGINE: postgresql
+
 jobs:
   lint:
     runs-on: "ubuntu-latest"
@@ -28,4 +31,7 @@ jobs:
       - name: Poetry install
         run: poetry install --with dev
       - name: Lint
-        run: make lint-ci
+        run: |
+          export PYTHONPATH=${PYTHONPATH}:./src/mimir/web_app:./src/
+          echo $PYTHONPATH
+          make lint-ci
