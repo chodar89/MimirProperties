@@ -8,6 +8,7 @@ class Command(createsuperuser.Command):
     """Borrowed from this thread:
     https://stackoverflow.com/questions/6244382/how-to-automate-createsuperuser-on-django
     """
+
     help = "Crate a superuser, and allow password and email to be provided"
 
     def add_arguments(self, parser: CommandParser) -> None:

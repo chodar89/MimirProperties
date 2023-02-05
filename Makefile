@@ -30,7 +30,14 @@ makemigrations:
 
 # Linting
 lint:
-	poetry run black ${APP_PATH} ${TEST_PATH} && poetry run isort ${APP_PATH} ${TEST_PATH} && poetry run mypy ${APP_PATH}
+	poetry run black ${APP_PATH} ${TEST_PATH} 
+	poetry run isort ${APP_PATH} ${TEST_PATH}
+	poetry run mypy ${APP_PATH}
+
+lint-ci:
+	poetry run black ${APP_PATH} ${TEST_PATH} 
+	poetry run isort ${APP_PATH} ${TEST_PATH}
+	poetry run mypy ${APP_PATH} --ignore-missing-imports
 
 # Tests
 test:

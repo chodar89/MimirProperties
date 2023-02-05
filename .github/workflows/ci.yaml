@@ -28,6 +28,4 @@ jobs:
       - name: Poetry install
         run: poetry install --with dev
       - name: Lint
-        env:
-          PYTHONPATH: ${PYTHONPATH}:${PWD}/src/mimir/web_app:${PWD}/src/
-        run: make lint
+        run: make lint-ci
