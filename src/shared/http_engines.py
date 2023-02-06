@@ -27,7 +27,7 @@ class RequestsEngine(HttpEngine):
             return HttpResponseDto(request_dto=dto, json=resp.json(), body_text=resp.text)
         except Exception as e:
             logger.info("Exception raised during request. Error: %s", e)
-        return HttpResponseDto(request_dto=dto)
+            return HttpResponseDto(request_dto=dto, error=e)
 
     def process_async_requests(self, dto_list: list[HttpRequestDto]) -> list[HttpResponseDto]:
         with ThreadPoolExecutor() as executor:

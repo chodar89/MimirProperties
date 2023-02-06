@@ -15,5 +15,6 @@ class HttpRequestDto:
 @dataclass
 class HttpResponseDto:
     request_dto: HttpRequestDto
-    json: dict = field(default_factory=dict)
     body_text: str = ""
+    error: Exception | None = None
+    json: dict = field(default_factory=dict)
