@@ -1,5 +1,7 @@
 from attrs import field, frozen
 
+from shared.value_objects import Timeout
+
 
 @frozen(kw_only=True)
 class HttpRequestDto:
@@ -9,7 +11,7 @@ class HttpRequestDto:
     headers: dict = field(default=dict)
     payload: dict = field(default=dict)
     query_parameters: dict = field(default=dict)
-    timeout: int = 5
+    timeout: int = Timeout.FIVE_SECOND_TIMEOUT
 
 
 @frozen(kw_only=True)
