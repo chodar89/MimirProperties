@@ -1,7 +1,8 @@
 from typing import Final
 
-from listing.application.interface.listing_config import ListingConfig
-from shared.dto import HttpQueryParameters, HttpResponseDto
+from listing.application.interfaces.listing_config import ListingConfig
+from shared.dto import (HttpRequestDto, HttpResponseDto,
+                        ListingSearchParametersDto)
 from shared.types.http import URL
 
 
@@ -14,14 +15,24 @@ class OTODomConfig(ListingConfig):
         return cls.BASE_URL
 
     @classmethod
-    def next_list_url(cls, query_params: HttpQueryParameters, next_page: int) -> URL:
+    def list_http_request_dto(
+        cls, dto: ListingSearchParametersDto, next_page: int
+    ) -> HttpRequestDto:
         url = URL(
-            f"{cls.BASE_URL}/pl/wyszukiwania/sprzedaz/{query_params.property_type}/"
-            f"{query_params.region}/{query_params.city}/distanceRadius={query_params.distance}"
-            f"&page={next_page}"
+            f"{cls.BASE_URL}/pl/wyszukiwanie/sprzedaz/{dto.property_type}/"
+            f"{dto.region}/{dto.city}/{dto.city}/{dto.city}"
         )
-        raise url
+        query_parameters = cls.parse_query_parameters(dto=dto, next_page=next_page)
+        return HttpRequestDto(url=url, http_method="GET", query_parameters=query_parameters)
 
     @classmethod
-    def detail_url(cls, dto: HttpResponseDto) -> URL:
+    def detail_http_request_dtos(cls, dto: HttpResponseDto) -> list[HttpRequestDto]:
         raise NotImplementedError
+
+    @classmethod
+    def parse_query_parameters(cls, dto: ListingSearchParametersDto, next_page: int) -> dict:
+        query_parameters = {
+            "distanceRadius": dto.distance,
+            "page": next_page,
+        }
+        return query_parameters
