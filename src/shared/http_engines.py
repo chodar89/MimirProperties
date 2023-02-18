@@ -24,7 +24,13 @@ class RequestsEngine(HttpEngine):
     def process_request(self, dto: HttpRequestDto) -> HttpResponseDto:
         try:
             resp = self._request(dto)
-            return HttpResponseDto(request_dto=dto, json=resp.json(), body_text=resp.text)
+            try:
+                resp_json = resp.json()
+            except requests.exceptions.JSONDecodeError:
+                resp_json = {}
+            return HttpResponseDto(
+                request_dto=dto, status_code=resp.status_code, json=resp_json, body_text=resp.text
+            )
         except Exception as e:
             logger.info("Exception raised during request. Error: %s", e)
             return HttpResponseDto(request_dto=dto, error=e)
