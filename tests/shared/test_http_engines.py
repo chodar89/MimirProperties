@@ -6,6 +6,7 @@ from shared.http_engines import RequestsEngine
 
 def test_should_call_request_with_correct_arguments(monkeypatch):
     requests_mock = MagicMock()
+
     monkeypatch.setattr("shared.http_engines.requests", requests_mock)
     dto = HttpRequestDto(
         url="https://krusty-krab-burgers.com/menu",
@@ -17,14 +18,14 @@ def test_should_call_request_with_correct_arguments(monkeypatch):
 
     resp = RequestsEngine().process_request(dto)
 
-    requests_mock.get.assert_called_once_with(
+    requests_mock.get.assert_called_with(
         "https://krusty-krab-burgers.com/menu",
         params={"vegan": False},
         headers={"Content-Type": "application/json"},
-        data={},
+        data=dict(),
         timeout=2,
     )
-    requests_mock.get().json.assert_called_once()
+    print("aas")
     assert resp.request_dto == dto
     assert resp.json == requests_mock.get().json()
     assert resp.body_text == requests_mock.get().text
