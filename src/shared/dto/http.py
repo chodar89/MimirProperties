@@ -1,20 +1,20 @@
-from dataclasses import dataclass, field
+from attrs import field, frozen
 
 
-@dataclass
+@frozen(kw_only=True)
 class HttpRequestDto:
 
     url: str
     http_method: str
-    headers: dict = field(default_factory=dict)
-    payload: dict = field(default_factory=dict)
-    query_parameters: dict = field(default_factory=dict)
+    headers: dict = field(default=dict)
+    payload: dict = field(default=dict)
+    query_parameters: dict = field(default=dict)
     timeout: int = 5
 
 
-@dataclass
+@frozen(kw_only=True)
 class HttpResponseDto:
     request_dto: HttpRequestDto
-    body_text: str = ""
-    error: Exception | None = None
-    json: dict = field(default_factory=dict)
+    body_text: str = field(repr=False, default="")
+    error: Exception | None = field(default=None)
+    json: dict = field(repr=False, default=dict)

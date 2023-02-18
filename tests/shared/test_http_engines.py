@@ -8,7 +8,7 @@ def test_should_call_request_with_correct_arguments(monkeypatch):
     requests_mock = MagicMock()
     monkeypatch.setattr("shared.http_engines.requests", requests_mock)
     dto = HttpRequestDto(
-        URL="https://krusty-krab-burgers.com/menu",
+        url="https://krusty-krab-burgers.com/menu",
         http_method="GET",
         headers={"Content-Type": "application/json"},
         query_parameters={"vegan": False},
@@ -34,7 +34,7 @@ def test_should_call_request_multiple_times(monkeypatch):
     request_mock = MagicMock()
     monkeypatch.setattr(RequestsEngine, "_request", request_mock)
     dto_one = HttpRequestDto(
-        URL="https://krusty-krab-burgers.com/menu",
+        url="https://krusty-krab-burgers.com/menu",
         http_method="GET",
         headers={"Content-Type": "application/json"},
         query_parameters={"vegan": False},
@@ -42,7 +42,7 @@ def test_should_call_request_multiple_times(monkeypatch):
     )
 
     dto_two = HttpRequestDto(
-        URL="https://krusty-krab-burgers.com/delivery",
+        url="https://krusty-krab-burgers.com/delivery",
         http_method="GET",
         headers={"Content-Type": "application/json"},
         query_parameters={"vegan": True},
@@ -65,7 +65,7 @@ def test_should_handle_request_errors_gracefully(monkeypatch):
     monkeypatch.setattr("shared.http_engines.RequestsEngine._request", mock_request)
 
     dto = HttpRequestDto(
-        URL="https://krusty-krab-burgers.com/menu",
+        url="https://krusty-krab-burgers.com/menu",
         http_method="GET",
         headers={"Content-Type": "application/json"},
         query_parameters={"vegan": False},
