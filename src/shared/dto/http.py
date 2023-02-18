@@ -1,21 +1,12 @@
 from attrs import Factory, field, frozen
 
+from shared.types.http import URL
 from shared.value_objects import Timeout
 
 
 @frozen(kw_only=True)
-class HttpQueryParameters:
-    city: str
-    distance: int
-    property_type: str
-    region: str
-    pagination_limit: int | None = None
-
-
-@frozen(kw_only=True)
 class HttpRequestDto:
-
-    url: str
+    url: URL
     http_method: str
     headers: dict = field(default=Factory(dict))
     payload: dict = field(default=Factory(dict))
@@ -27,5 +18,9 @@ class HttpRequestDto:
 class HttpResponseDto:
     request_dto: HttpRequestDto
     body_text: str = field(repr=False, default="")
-    error: Exception | None = field(default=None)
+    error: Exception | None = None
     json: dict = field(repr=False, default=Factory(dict))
+    status_code: int | None = None
+
+    def is_ok(self) -> bool:
+        return self.status_code == 200 and self.error is None
