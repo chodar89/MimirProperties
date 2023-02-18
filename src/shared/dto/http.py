@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 @dataclass
 class HttpRequestDto:
 
-    URL: str
+    url: str
     http_method: str
     headers: dict = field(default_factory=dict)
     payload: dict = field(default_factory=dict)
