@@ -37,7 +37,7 @@ class RequestsEngine(HttpEngine):
     def _request(self, dto: HttpRequestDto) -> requests.Response:
         req_method = getattr(requests, dto.http_method.lower())
         resp: requests.Response = req_method(
-            dto.URL,
+            dto.url,
             params=dto.query_parameters,
             headers=dto.headers,
             data=dto.payload,
