@@ -1,1 +1,1 @@
-from .http import HttpRequestDto, HttpResponseDto
+from .http import HttpQueryParameters, HttpRequestDto, HttpResponseDto

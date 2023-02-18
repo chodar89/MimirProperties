@@ -4,6 +4,15 @@ from shared.value_objects import Timeout
 
 
 @frozen(kw_only=True)
+class HttpQueryParameters:
+    city: str
+    distance: int
+    property_type: str
+    region: str
+    pagination_limit: int | None = None
+
+
+@frozen(kw_only=True)
 class HttpRequestDto:
 
     url: str

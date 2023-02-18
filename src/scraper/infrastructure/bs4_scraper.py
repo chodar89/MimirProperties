@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 
+from listing.application.interface.listing_config import ListingConfig
 from scraper.application.interfaces import ScraperInterface
 from shared.dto import HttpRequestDto
 from shared.http_engines import HttpEngine
@@ -13,5 +14,8 @@ class BeautifulSoupScraper(ScraperInterface):
     def __init__(self) -> None:
         self._bs = BeautifulSoup
 
-    def process(self, dto: HttpRequestDto, http_engine: HttpEngine) -> None:
-        ...
+    def process(
+        self, dto: HttpRequestDto, listing_service_config: ListingConfig, http_engine: HttpEngine
+    ) -> None:
+        response = http_engine.process_request(dto=dto)
+        pass
