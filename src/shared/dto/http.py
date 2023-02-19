@@ -17,7 +17,7 @@ class HttpRequestDto:
 @frozen(kw_only=True)
 class HttpResponseDto:
     request_dto: HttpRequestDto
-    body_text: str = field(repr=False, default="")
+    content: str = field(repr=False, default="")
     error: Exception | None = None
     json: dict = field(repr=False, default=Factory(dict))
     status_code: int | None = None

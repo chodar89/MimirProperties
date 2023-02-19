@@ -29,7 +29,7 @@ class RequestsEngine(HttpEngine):
             except requests.exceptions.JSONDecodeError:
                 resp_json = {}
             return HttpResponseDto(
-                request_dto=dto, status_code=resp.status_code, json=resp_json, body_text=resp.text
+                request_dto=dto, status_code=resp.status_code, json=resp_json, content=resp.content
             )
         except Exception as e:
             logger.info("Exception raised during request. Error: %s", e)
