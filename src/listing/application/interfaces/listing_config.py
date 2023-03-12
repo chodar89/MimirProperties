@@ -21,10 +21,15 @@ class ListingConfig(Abstract):
 
     @classmethod
     @abstractmethod
-    def detail_http_request_dtos(cls, dto: HttpResponseDto) -> list[HttpRequestDto]:
+    def detail_http_request_dtos(cls, url_paths: list[str]) -> list[HttpRequestDto]:
         ...
 
     @classmethod
     @abstractmethod
-    def parse_query_parameters(cls, dto: ListingSearchParametersDto, next_page: int) -> dict:
+    def listings_container_search_tags(cls) -> dict:
+        ...
+
+    @classmethod
+    @abstractmethod
+    def _parse_query_parameters(cls, dto: ListingSearchParametersDto, next_page: int) -> dict:
         ...
