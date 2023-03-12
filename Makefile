@@ -30,6 +30,7 @@ makemigrations:
 
 # Linting
 lint:
+	autoflake --remove-unused-variables --ignore-init-module-imports --remove-all-unused-imports  --recursive --in-place src
 	poetry run black ${APP_PATH} ${TEST_PATH} 
 	poetry run isort ${APP_PATH} ${TEST_PATH}
 	poetry run mypy ${APP_PATH}
