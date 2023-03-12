@@ -1,8 +1,7 @@
 from abc import ABC as Abstract
 from abc import abstractmethod
 
-from shared.dto import (HttpRequestDto, HttpResponseDto,
-                        ListingSearchParametersDto)
+from shared.dto import HttpRequestDto, ListingSearchParametersDto
 from shared.types.http import URL
 
 

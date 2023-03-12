@@ -5,7 +5,6 @@ from scraper.application.interfaces import ScraperInterface
 from shared.dto import (HttpRequestDto, HttpResponseDto,
                         ListingSearchParametersDto)
 from shared.http_engines import RequestsEngine
-from shared.types.http import URL
 from shared.value_objects.parsers import ResponseParser
 
 PAGE_NUMBER = int
@@ -36,7 +35,7 @@ class BeautifulSoupScraper(ScraperInterface):
                 soup = self._bs(detail_response.content, self.PARSER)
                 dirty_price = soup.find(attrs={"data-testid": "ad-price-container"}).find("h3").text
                 split_price = [s for s in dirty_price.split() if s.isdigit()]
-                clean_price = int("".join(split_price))
+                int("".join(split_price))
 
     def _process_list_view(self, dto: ListingSearchParametersDto) -> HttpResponseDto:
         http_request_dto = self._listing_config.list_http_request_dto(

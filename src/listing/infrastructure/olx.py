@@ -1,8 +1,7 @@
 from typing import Final
 
 from listing.application.interfaces.listing_config import ListingConfig
-from shared.dto import (HttpRequestDto, HttpResponseDto,
-                        ListingSearchParametersDto)
+from shared.dto import HttpRequestDto, ListingSearchParametersDto
 from shared.types.http import URL
 
 
